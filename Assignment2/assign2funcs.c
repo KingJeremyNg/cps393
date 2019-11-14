@@ -1,47 +1,55 @@
+// Student Name: Jeremy Ng
+// Student Number: 500882192
+// I certify that this lab is entirely my own work.
+
 #include "assign2funcs.h"
 
-// bool doubleChecker(char string[]) {
-//     char *end;
-//     double result = 0;
+// Function to check if input string contains any alpha characters then return false.
+// If string length is greater than 1 then return false.
+bool numChecker(char string[])
+{
+    if (strlen(string) > 1)
+    {
+        return false;
+    }
+    for (int i = 0; i < strlen(string); i++)
+    {
+        if (isalpha(string[i]))
+        {
+            return false;
+        }
+    }
+    return true;
+}
 
-//     result = strtod(string, &end);
+// Function to cast a character into an integer by subtracting its ASCII value by "0".
+int intCast(char string)
+{
+    return (string - '0');
+}
 
-//     if (result == 0 && end == string) {
-//         printf("%s is not a valid input", string);
-//         return false;
-//     }
-//     else {
-//         return true;
-//     }
-// }
+// Function to account for input such as -0.1abc.
+bool inputChecker(char string[])
+{
+    float ignore;
+    char c;
+    if (sscanf(string, "%f %c", &ignore, &c) == 1)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
-// bool intChecker(char *string) {
-//     if (isdigit(string)) {
-//         if (&string[1] == "\0") {
-//             return true;
-//         }
-//         else {
-//             return false;
-//         }
-//     }
-//     else {
-//         return false;
-//     }
-// }
-
-// float floatParser(char string[]) {
-//     return atof(string);
-// }
-
-// //Find N=sqrt(v1**2 + v2**2 + ... + vn**2)
-// float length(int array[], int num) {
-//     float n = 0;
-//     for (int i = 0; i < num; i++) {
-//         n += array[i] * array[i];
-//     }
-//     return sqrt(n);
-// }
-
-// float normalize() {
-//     //Normalize by [v1/N, v2/N, ... vn/N]
-// }
+// Function to check if input string is a valid double value.
+bool doubleChecker(char string[])
+{
+    double temp = atof(string);
+    if (temp == 0 && strcmp(string, "0"))
+    {
+        return false;
+    }
+    return true;
+}

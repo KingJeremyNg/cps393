@@ -1,3 +1,7 @@
+// Student Name: Jeremy Ng
+// Student Number: 500882192
+// I certify that this lab is entirely my own work.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -5,10 +9,9 @@
 #include <stdbool.h>
 #include <ctype.h>
 
-#define size 1024
+bool numChecker(char string[]);
+int intCast(char string);
+bool inputChecker(char string[]);
+bool doubleChecker(char string[]);
 
-float array[size];
-char input[size];
-int num;
-int count;
-float n;
+#define size 1024
