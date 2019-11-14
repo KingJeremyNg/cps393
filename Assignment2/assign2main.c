@@ -16,31 +16,33 @@ int main(void)
 
 // Start of loop by accepting first number of elements in array.
 START:
-    printf("\nEnter your vector. 0 to exit program.\n");
-    scanf("%s", &input);
-
-    if (numChecker(input))
-    {
-        num = intCast(*input);
-        if (num == 0)
+    if (scanf("%s", input) != EOF) {
+        if (numChecker(input))
         {
-            goto END;
+            num = intCast(*input);
+            if (num == 0)
+            {
+                goto END;
+            }
+            else if (num < 0 || num > 9)
+            {
+                goto INVALID;
+            }
         }
-        else if (num < 0 || num > 9)
+        else
         {
             goto INVALID;
         }
     }
-    else
-    {
-        goto INVALID;
+    else {
+        goto END;
     }
 
     goto INPUT;
 
 // Print BAD INPUT, ignore excess input and set error flag to 1.
 INVALID:
-    printf("\nBAD INPUT\n");
+    printf("BAD INPUT\n");
     fflush(stdin);
     errorFlag = 1;
     goto START;
@@ -52,20 +54,25 @@ INPUT:
     count = 0;
     while (count < num)
     {
-        scanf("%s", &input);
-        if (doubleChecker(input) && inputChecker(input))
-        {
-            array[count] = atof(input);
+        if (scanf("%s", input) != EOF) {
+            if (doubleChecker(input) && inputChecker(input))
+            {
+                array[count] = atof(input);
+            }
+            else
+            {
+                goto INVALID;
+            }
+            count++;
         }
-        else
-        {
-            goto INVALID;
+        else {
+            errorFlag = 1;
+            goto END;
         }
-        count++;
     };
     fflush(stdin);
 
-    printf("\nVECTOR: [ ");
+    printf("VECTOR: [ ");
     for (int i = 0; i < num - 1; i++)
     {
         printf("%.3f, ", array[i]);
@@ -107,6 +114,5 @@ NORMALIZE:
 
 // Label to print and exit with error flag.
 END:
-    printf("\nClosing program...\n\n");
     exit(errorFlag);
 }
