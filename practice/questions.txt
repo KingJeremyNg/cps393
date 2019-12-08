@@ -1,0 +1,99 @@
+questions.txt
+Earlier this year
+Sep 9
+
+Christian Wang uploaded an item
+Text
+questions.txt
+---------------------------------------------------------------------------
+  CPS393 TEST 4 (15 marks)
+
+  -Your answers must be in files under your TEST HOME DIRECTORY, named:
+        q0.c, q1.c, q2.c, q3.c
+  -Choose appropriate return/exit values for your programs.
+  -Do not error-check unless the question explicitly requires it.
+  -Assume user input is ALWAYS correct, and memory is unlimited. 
+  -DO NOT MODIFY GIVEN CODE unless question explicitly requires it.
+  -Format your output like the given examples.
+
+  -Up to 15 marks are deducted for: 
+     -modifying code other than as per requirements
+     -files named incorrectly, or not in home directory
+     -question 0 incorrect
+---------------------------------------------------------------------------
+
+0.  Write a C program named q0.c that prints your fullname, SID, CS userid
+    on stdout.
+
+---------------------------------------------------------------------------
+
+1. (5 marks)
+  Complete program, q1.c, which takes one command line argument, and reports 
+  whether or not that argument is a readable file. If it IS, the program 
+  also prints the number of lines in the file.
+
+  HINTS: 
+    -Function fgetc reads one character from a file
+    -The number of lines equals the number of '\n' characters.
+
+  Examples:
+
+  > cat hello.txt
+  hello there
+  this is
+  the file named hello.txt
+  used to test question number one
+  > ./q1 hello.txt
+  hello.txt is a readable file with 4 lines
+  > ./q1 /usr/tmp/
+  /usr/tmp/ is NOT a readable file
+
+---------------------------------------------------------------------------
+
+2. (4 marks)
+   Complete program q2.c which should:
+    -read an integer, n, from stdin.
+    -dynamically allocate memory for array, A, to hold exactly n integers.
+    -read exactly n integers from stdin, placing them into A in order.
+    -print entries of A in reverse, on one line.
+    -print total bytes of memory used by entries in A
+
+    Examples: 
+
+    > ./q2
+    4 9 3 10 6
+    A in reverse is: 6 10 3 9
+    Bytes used by A: 16
+    >
+
+---------------------------------------------------------------------------
+
+3. (6 marks)
+    The following are GIVEN: 
+    q3.h      -contains header file 
+    q3main.c  -calls SetUp to initialize linked list, L
+              -calls PrintAll to print all 11 nodes in L, with one space 
+               between each node
+              -reads integers, x and y
+              -calls PrintPart to print only part of L (node x to node y)
+    q3func.o  -object code for SetUp and PrintAll functions
+    q3.c      -source code for PrintPart function 
+ 
+ 
+    MODIFY ONLY q3.c so that PrintPart prints only node x to node y of L.
+    Assume x and y are integers from 1 to 11, inclusive, and x<=y.
+
+    Examples (with modified q3.c):
+
+    > gcc -o prog q3main.c q3func.o q3.c
+    > ./prog
+    L is: C P S 3 9 3 F I N A L 
+    Enter x and y: 5 8
+    Nodes 5 to 8 of L are: 9 3 F I 
+    > ./prog
+    L is: C P S 3 9 3 F I N A L 
+    Enter x and y: 11 11
+    Nodes 11 to 11 of L are: L 
+    >
+
+---------------------------------------------------------------------------
