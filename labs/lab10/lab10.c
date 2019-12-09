@@ -14,7 +14,7 @@ bool isInt(char *s) {
     }
 
     for (i = 1; i < length; i++) {
-        if (!isdigit(s[1])) {
+        if (!isdigit(s[i])) {
             return false;
         }
     }
